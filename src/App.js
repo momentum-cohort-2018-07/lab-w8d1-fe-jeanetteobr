@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import textOptions from './textOptions'
+import TextInput from './TextInput'
 
 class App extends Component {
   constructor () {
@@ -9,12 +10,6 @@ class App extends Component {
       text: '',
       options: []
     }
-
-    this.updateText = this.updateText.bind(this)
-  }
-
-  updateText (event) {
-    this.setState({ text: event.target.value })
   }
 
   setOption (option) {
@@ -60,14 +55,7 @@ class App extends Component {
         <div className='row'>
           <div className='col'>
             {/* TextEntry */}
-            <textarea
-              className='TextEntry-textbox'
-              placeholder='What do you want to shrink?'
-              onChange={this.updateText}
-              value={text} />
-            <div>
-              {text && `${text.length} characters`}
-            </div>
+            <TextInput />
             {/* end TextEntry */}
           </div>
           <div className='col'>
