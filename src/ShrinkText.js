@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import textOptions from './textOptions'
-import PropTypes from './PropTypes'
+import PropTypes from 'prop-types'
 
 class ShrinkText extends Component {
   shrinkText () {

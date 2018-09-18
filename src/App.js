@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import textOptions from './textOptions'
 import TextInput from './TextInput'
 import ShrinkText from './ShrinkText'
+// import TxtOptions from './TxtOptions'
 
 class App extends Component {
   constructor () {
@@ -34,14 +35,10 @@ class App extends Component {
         <h1>TweetShrink</h1>
         <div className='row'>
           <div className='col'>
-            {/* TextEntry */}
             <TextInput />
-            {/* end TextEntry */}
           </div>
           <div className='col'>
-            {/* ShrunkText */}
             <ShrinkText />
-            {/* end ShrunkText */}
           </div>
         </div>
         <div className='row options'>
