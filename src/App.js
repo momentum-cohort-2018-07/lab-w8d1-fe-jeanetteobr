@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import textOptions from './textOptions'
 import TextInput from './TextInput'
+import ShrinkText from './ShrinkText'
 
 class App extends Component {
   constructor () {
@@ -27,28 +28,7 @@ class App extends Component {
       })
     }
   }
-
-  shrinkText () {
-    let { text, options } = this.state
-
-    if (!text) {
-      return ''
-    }
-
-    let opObj
-    options.forEach(option => {
-      opObj = textOptions.find(o => o.id === option)
-      if (opObj) {
-        text = opObj.fn(text)
-      }
-    })
-
-    return text
-  }
-
   render () {
-    const text = this.state.text
-    const shrunkText = this.shrinkText()
     return (
       <div className='App container'>
         <h1>TweetShrink</h1>
@@ -60,12 +40,7 @@ class App extends Component {
           </div>
           <div className='col'>
             {/* ShrunkText */}
-            <div className='TextEntry-shrunk-text'>
-              {shrunkText}
-            </div>
-            <div>
-              {shrunkText && `${shrunkText.length} characters`}
-            </div>
+            <ShrinkText />
             {/* end ShrunkText */}
           </div>
         </div>

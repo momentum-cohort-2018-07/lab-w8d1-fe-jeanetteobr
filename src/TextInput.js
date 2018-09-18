@@ -1,19 +1,14 @@
 import React, { Component } from 'react'
 
-class TextInput extends Component {
-  constructor (props) {
-    super()
-    this.state = {
-      text: ''
-    }
-  }
+import PropTypes from 'prop-types'
 
+class TextInput extends Component {
   updateText (event) {
     this.setState({ text: event.target.value })
   }
 
   render () {
-    const { text } = this.state
+    const { text } = this.props
     return (
       <div>
         <textarea
@@ -27,5 +22,9 @@ class TextInput extends Component {
       </div>
     )
   }
+}
+
+TextInput.propTypes = {
+  text: PropTypes.string
 }
 export default TextInput
