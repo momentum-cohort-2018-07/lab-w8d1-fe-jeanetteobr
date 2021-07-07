@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 import textOptions from './textOptions'
+import TextInput from './TextInput'
+import ShrinkText from './ShrinkText'
+import TxtOptions from './TxtOptions'
 
 class App extends Component {
   constructor () {
@@ -9,7 +12,7 @@ class App extends Component {
       text: '',
       options: []
     }
-
+    this.setOption = this.setOption.bind(this)
     this.updateText = this.updateText.bind(this)
   }
 
@@ -34,7 +37,7 @@ class App extends Component {
   }
 
   shrinkText () {
-    let { text, options } = this.state
+    let { text, options } = this.props
 
     if (!text) {
       return ''
@@ -50,52 +53,18 @@ class App extends Component {
 
     return text
   }
-
   render () {
-    const text = this.state.text
-    const shrunkText = this.shrinkText()
     return (
       <div className='App container'>
         <h1>TweetShrink</h1>
         <div className='row'>
           <div className='col'>
-            {/* TextEntry */}
-            <textarea
-              className='TextEntry-textbox'
-              placeholder='What do you want to shrink?'
-              onChange={this.updateText}
-              value={text} />
-            <div>
-              {text && `${text.length} characters`}
-            </div>
-            {/* end TextEntry */}
+            <TextInput text={this.state.text} updateText={this.updateText} />
           </div>
           <div className='col'>
-            {/* ShrunkText */}
-            <div className='TextEntry-shrunk-text'>
-              {shrunkText}
-            </div>
-            <div>
-              {shrunkText && `${shrunkText.length} characters`}
-            </div>
-            {/* end ShrunkText */}
+            <ShrinkText shrunkText={this.shrinkText()} />
           </div>
-        </div>
-        <div className='row options'>
-          <div className='col-12'>
-            <h4>Options</h4>
-          </div>
-          {/* TextOptions */}
-          {textOptions.map((option, idx) => (
-            <div key={idx} className='col-6'>
-              {/* TextOption */}
-              <label htmlFor={option.id}>
-                <input type='checkbox' id={option.id} onChange={this.setOption(option.id)} /> {' ' + option.label}
-              </label>
-              {/* end TextOption */}
-            </div>
-          ))}
-          {/* end TextOptions */}
+          <TxtOptions textOptions={textOptions} setOption={this.setOption} />
         </div>
       </div>
     )
